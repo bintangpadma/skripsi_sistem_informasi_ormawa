@@ -72,7 +72,7 @@
         <div class="container">
             <section class="program" id="program">
                 <div class="section-header">
-                    <h2 class="title">Kisah Setiap Program Kerja ORMAWA dan UKM</h2>
+                    <h2 class="title">Kisah Setiap Program Kerja ORMAWA</h2>
                 </div>
                 @foreach($studentOrganizations as $studentOrganization)
                     <div class="section-content content-gap swiper mySwiper">
@@ -95,10 +95,47 @@
             </section>
         </div>
     @endif
+<div class="container">
+    <section class="program" id="program">
+        <div class="section-header">
+            <h2 class="title">Kisah Setiap Program Kerja UKM</h2>
+        </div>
+
+        @foreach($studentActivityUnits as $unit)
+            <div class="section-content content-gap swiper mySwiper">
+                <div class="swiper-wrapper">
+
+                    @foreach($unit->student_activity_unit_programs as $program)
+                        <div class="swiper-slide">
+                            <div class="card-program">
+                                <img src="{{ $program->image_path ? asset('assets/image/program/' . $program->image_path) : 'https://placehold.co/48x48?text=Image+Not+Found' }}" 
+                                     alt="Image Program" 
+                                     class="program-image">
+
+                                <div class="program-content">
+                                    <h4 class="content-title">{{ $program->name }}</h4>
+
+                                    <h6 class="content-author">
+                                        {{ $program->student_activity_unit->abbreviation }}
+                                    </h6>
+
+                                    <p class="content-description">{{ $program->description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+        @endforeach
+
+    </section>
+</div>
+    
     <div class="container">
         <section class="recruitment" id="recruitment">
             <div class="section-header">
-                <h2 class="title">Informasi Seputar OPEN REQRUITMENT Program Kerja</h2>
+                <h2 class="title">Informasi Seputar Pendaftaran Kepanitiaan</h2>
             </div>
             <div class="section-content content-gap">
                 @foreach($events as $event)
