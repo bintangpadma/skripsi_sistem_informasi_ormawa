@@ -81,6 +81,30 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
+            <div class="form-input">
+                <label for="is_interview">Status Interview</label>
+                <select class="input" name="is_interview">
+                    <option value="1" {{ $eventRecruitment->is_interview ? 'selected' : '' }}>Sudah Interview</option>
+                    <option value="0" {{ !$eventRecruitment->is_interview ? 'selected' : '' }}>Belum Interview</option>
+                </select>
+                @error('is_interview')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input">
+                <label for="date">Tanggal & Waktu Interview</label>
+                <input type="datetime-local" class="input" name="date" placeholder="Masukkan tahun angkatan perekrut..." value="{{ $eventRecruitment->date }}">
+                @error('date')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-input lg:col-span-2">
+                <label for="location">Lokasi Interview</label>
+                <input type="text" class="input" name="location" placeholder="Masukkan tahun angkatan perekrut..." value="{{ $eventRecruitment->location }}">
+                @error('location')
+                <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
             <div class="form-input lg:col-span-2">
                 <label for="reason">Motivasi/ Alasan Mengikuti Kepanitiaan</label>
                 <textarea rows="4" class="input" name="reason" placeholder="Masukkan motivasi/ alasan mengikuti kepanitiaan perekrut...">{{ $eventRecruitment->reason }}</textarea>

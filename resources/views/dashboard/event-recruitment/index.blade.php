@@ -28,6 +28,7 @@
                     <th>Email</th>
                     <th>Nomor Telepon</th>
                     <th>Total Mendaftar Event</th>
+                    <th>Status Interview</th>
                     <th>Status</th>
                     <th></th>
                 </tr>
@@ -38,12 +39,19 @@
                 @else
                     @foreach ($eventRecruitments as $eventRecruitment)
                         <tr>
-                            <td>{{ $eventRecruitment->event_division->name }}</td>
+                            <td>{{ $eventRecruitment->event_division->name ?? '-' }}</td>
                             <td>{{ $eventRecruitment->student_name }}</td>
                             <td>{{ $eventRecruitment->student_code }}</td>
                             <td>{{ $eventRecruitment->email }}</td>
                             <td>{{ $eventRecruitment->number_phone }}</td>
                             <td>{{ $eventRecruitment->total_event }}</td>
+                            <td>
+                                @if($eventRecruitment->is_interview)
+                                    Sudah Interview
+                                @else
+                                    Belum Interview
+                                @endif
+                            </td>
                             <td>
                                 @if($eventRecruitment->status === 'pending')
                                     <p class="status-pending">Tertunda</p>

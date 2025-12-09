@@ -38,10 +38,12 @@
                 @csrf
                 <div class="form-input">
                     <label for="event_divisions_id">Divisi</label>
-                    <select class="input" name="event_divisions_id">
+                    <select class="input" required name="event_divisions_id">
                         <option value="">Pilih divisi anda...</option>
                         @foreach($event->event_divisions as $eventDivision)
-                            <option value="{{ $eventDivision->id }}">{{ $eventDivision->name }}</option>
+                            @if($eventDivision->status)
+                                <option value="{{ $eventDivision->id }}">{{ $eventDivision->name }}</option>
+                            @endif
                         @endforeach
                     </select>
                     @error('event_divisions_id')
@@ -50,56 +52,74 @@
                 </div>
                 <div class="form-input">
                     <label for="student_name">Nama Mahasiswa</label>
-                    <input type="text" class="input" name="student_name" placeholder="Masukkan nama mahasiswa anda...">
+                    <input type="text" class="input" required name="student_name" placeholder="Masukkan nama mahasiswa anda..." value="{{ old('student_name') }}">
                     @error('student_name')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-input">
                     <label for="student_code">NIM</label>
-                    <input type="text" class="input" name="student_code" placeholder="Masukkan nim anda...">
+                    <input type="number" class="input" required name="student_code" placeholder="Masukkan nim anda..." value="{{ old('student_code') }}">
                     @error('student_code')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-input">
                     <label for="email">Email</label>
-                    <input type="email" class="input" name="email" placeholder="Masukkan email perekrut...">
+                    <input type="email" class="input" required name="email" placeholder="Masukkan email perekrut..." value="{{ old('email') }}">
                     @error('email')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-input">
                     <label for="number_phone">Nomor Telepon</label>
-                    <input type="text" class="input" name="number_phone" placeholder="Masukkan nomor telepon anda...">
+                    <input type="text" class="input" required name="number_phone" placeholder="Masukkan nomor telepon anda..." value="{{ old('number_phone') }}" pattern="^(^\+62|62|0)8[1-9][0-9]{6,11}$" title="Nomor telepon harus diawali 08, 62, atau +62 dan hanya untuk nomor seluler Indonesia.">
                     @error('number_phone')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-input">
                     <label for="study_program">Program Studi</label>
-                    <input type="text" class="input" name="study_program" placeholder="Masukkan program studi anda...">
+                    <select class="input" required name="study_program">
+                        <option value="">Pilih program studi anda...</option>
+                        <option value="informatika">Informatika</option>
+                        <option value="sistem informasi">Sistem Informasi</option>
+                        <option value="sistem informasi akuntansi">Sistem Informasi Akuntansi</option>
+                        <option value="desain komunikasi visual">Desain Komunikasi Visual</option>
+                        <option value="management">Management</option>
+                        <option value="akuntansi">Akuntansi</option>
+                        <option value="bisnis digital">Bisnis Digital</option>
+                    </select>
                     @error('study_program')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-input">
                     <label for="class">Kelas</label>
-                    <input type="text" class="input" name="class" placeholder="Masukkan kelas anda...">
+                    <select class="input" required name="class">
+                        <option value="">Pilih kelas anda...</option>
+                        <option value="pagi">Pagi</option>
+                        <option value="malam">Malam</option>
+                    </select>
                     @error('class')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-input">
                     <label for="year_appointment">Tahun Angkatan</label>
-                    <input type="text" class="input" name="year_appointment" placeholder="Masukkan tahun angkatan anda...">
+                    <select class="input" required name="year_appointment">
+                        <option value="">Pilih tahun angkatan anda...</option>
+                        @foreach($classYears as $classYear)
+                            <option value="{{ $classYear }}">{{ $classYear }}</option>
+                        @endforeach
+                    </select>
                     @error('year_appointment')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="form-input lg:col-span-2">
                     <label for="reason">Motivasi/ Alasan Mengikuti Kepanitiaan</label>
-                    <textarea rows="4" class="input" name="reason" placeholder="Masukkan motivasi/ alasan mengikuti kepanitiaan anda..."></textarea>
+                    <textarea rows="4" class="input" required name="reason" placeholder="Masukkan motivasi/ alasan mengikuti kepanitiaan anda..."></textarea value="{{ old('reason') }}">
                     @error('reason')
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror

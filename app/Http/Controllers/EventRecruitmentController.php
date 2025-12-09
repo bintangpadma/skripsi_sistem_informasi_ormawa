@@ -8,7 +8,9 @@ use App\Models\EventRecruitment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendRecruitmentEmail;
+use App\Mail\SendRecruitmentInterviewEmail;
 use PDF;
+use Carbon\Carbon;
 
 class EventRecruitmentController extends Controller
 {
@@ -96,7 +98,7 @@ class EventRecruitmentController extends Controller
                 'student_name' => 'required|string|max:255',
                 'student_code' => 'required|string|max:50',
                 'email' => 'required|email:dns|max:255',
-                'number_phone' => 'required|string|max:15',
+                'number_phone' => 'required|regex:/^[0-9]+$/|min:10|max:15',
                 'study_program' => 'required|string|max:50',
                 'class' => 'required|string|max:25',
                 'year_appointment' => 'required|string',
@@ -107,11 +109,11 @@ class EventRecruitmentController extends Controller
             if (auth()->check()) {
                 return redirect()->route('event-recruitment.index', $event)->with('success', 'Berhasil mendaftar panitia event!');
             } else {
-                return redirect()->back()->with('success', 'Berhasil mendaftar panitia event!');
+                return back()->with('success', 'Berhasil mendaftar panitia event!');;
             }
         } catch (\Exception $e) {
             logger($e->getMessage());
-            return redirect()->back()->with('failed', 'Gagal mendaftar panitia event!');
+            return back()->with('failed', 'Gagal mendaftar panitia event!');
         }
     }
 
@@ -140,6 +142,9 @@ class EventRecruitmentController extends Controller
                 'year_appointment' => 'required|string',
                 'reason' => 'required|string',
                 'status' => 'required|string',
+                'is_interview' => 'required',
+                'date' => 'nullable',
+                'location' => 'nullable',
             ]);
             $eventRecruitment->update($validatedData);
             if ($validatedData['status'] === 'accepted') {
@@ -147,6 +152,22 @@ class EventRecruitmentController extends Controller
             } else if ($validatedData['status'] === 'rejected') {
                 $this->sendRecruitmentEmail($eventRecruitment->id, 'rejected');
             }
+
+            if (!empty($validatedData['date']) && !empty($validatedData['location'])) {
+                $formattedDate = Carbon::parse($validatedData['date'])->translatedFormat('l, d F Y H:i');
+
+                $data = [
+                    'date' => $formattedDate,
+                    'location' => $eventRecruitment->location,
+                    'is_interview' => $eventRecruitment->is_interview,
+                    'event' => $eventRecruitment->event->name,
+                    'from_email' => env('MAIL_FROM_ADDRESS'),
+                    'from_name' => 'Admin ' . $eventRecruitment->event->name,
+                ];
+
+                Mail::to($recipient)->send(new SendRecruitmentInterviewEmail($data));
+            }
+
             return redirect()->route('event-recruitment.index', $event)->with('success', 'Berhasil mengedit perekrut!');
         } catch (\Exception $e) {
             logger($e->getMessage());

@@ -12,9 +12,10 @@
                 {{ session('failed') }}
             </div>
         @endif
-        <h2 class="title">Masukkan Akun Ormawa/ Admin Anda Sekarang</h2>
-        <form action="{{ route('user.store') }}" method="POST" class="form">
+        <h2 class="title">Reset Password Baru</h2>
+        <form action="{{ route('user.store-reset') }}" method="POST" class="form">
             @csrf
+            <input type="hidden" name="token" value="{{ $token }}">
             <div class="form-input">
                 <label for="email">Email</label>
                 <input type="email" class="input" name="email" placeholder="Masukkan email anda...">
@@ -29,8 +30,14 @@
                     <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            <a href="{{ route('user.forgot') }}">Lupa Password?</a>
-            <button type="submit" class="button-primary w-full text-center">Masuk</button>
+            <div class="form-input">
+                <label for="password_confirmation">Password Confirmation</label>
+                <input type="password" class="input" name="password_confirmation" placeholder="Masukkan password konfirmasi anda...">
+                @error('password_confirmation')
+                    <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
+            <button type="submit" class="button-primary w-full text-center">Reset Password</button>
         </form>
     </div>
 @endsection

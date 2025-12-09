@@ -13,7 +13,7 @@
     <div class="content-menu content-table">
         <div class="table-header">
             <form method="GET" class="form">
-                <input type="search" class="input" name="search" placeholder="Cari panitia..." value="{{ $search }}">
+                <input type="search" class="input" name="search" placeholder="Cari panitia berdasarkan NIM..." value="{{ $search }}">
             </form>
         </div>
         <div class="table-group">

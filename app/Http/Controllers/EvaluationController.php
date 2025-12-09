@@ -18,16 +18,7 @@ class EvaluationController extends Controller
                         $query->where(function ($subQuery) use ($search) {
                             $subQuery->where('status', 'accepted')
                                 ->where(function ($q) use ($search) {
-                                    $q->where('student_name', 'LIKE', '%' . $search . '%')
-                                        ->orWhere('student_code', 'LIKE', '%' . $search . '%')
-                                        ->orWhere('number_phone', 'LIKE', '%' . $search . '%')
-                                        ->orWhere('study_program', 'LIKE', '%' . $search . '%')
-                                        ->orWhereHas('event', function ($q2) use ($search) {
-                                            $q2->where('name', 'LIKE', '%' . $search . '%');
-                                        })
-                                        ->orWhereHas('event_division', function ($q2) use ($search) {
-                                            $q2->where('name', 'LIKE', '%' . $search . '%');
-                                        });
+                                    $q->where('student_code', 'LIKE', '%' . $search . '%');
                                 });
                         });
                     });

@@ -33,7 +33,7 @@
         </a>
         <a href="{{ route('event.index') }}" class="content-item group {{ Route::is('event*') ? 'active' : '' }}">
             <span class="group-hover:bg-event-dark group-hover:opacity-100 {{ Route::is('event*') ? 'bg-event-dark opacity-100' : 'bg-event-light opacity-[0.62]' }}"></span>
-            Event
+            Rekruitment
         </a>
         <a href="{{ route('evaluation.index') }}" class="content-item group {{ Route::is('evaluation*') ? 'active' : '' }}">
             <span class="group-hover:bg-evaluation-dark group-hover:opacity-100 {{ Route::is('evaluation*') ? 'bg-evaluation-dark opacity-100' : 'bg-evaluation-light opacity-[0.62]' }}"></span>
@@ -55,6 +55,10 @@
                 File Administrasi
             </a>
         @endif
+        <a href="{{ route('pic.index') }}" class="content-item group {{ Route::is('pic*') ? 'active' : '' }}">
+            <span class="group-hover:bg-admin-dark group-hover:opacity-100 {{ Route::is('pic*') ? 'bg-admin-dark opacity-100' : 'bg-admin-light opacity-[0.62]' }}"></span>
+            PIC
+        </a>
         <form action="{{ route('user.delete') }}" method="POST">
             @csrf
             <button class="content-item w-full group">

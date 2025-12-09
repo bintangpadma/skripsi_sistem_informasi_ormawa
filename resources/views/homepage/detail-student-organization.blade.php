@@ -142,6 +142,8 @@
                     </div>
                 @endforeach
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </section>
     @if($eventTrackRecords->count() > 0)
@@ -164,6 +166,8 @@
                         </div>
                     @endforeach
                 </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </section>
     @endif
@@ -181,10 +185,21 @@
             });
         });
 
-        let swiper = new Swiper(".mySwiper", {
-            pagination: {
-                el: ".swiper-pagination",
-            },
+        document.querySelectorAll('.mySwiper').forEach((slider) => {
+            new Swiper(slider, {
+                slidesPerView: 1,
+                spaceBetween: 16,
+
+                navigation: {
+                    nextEl: slider.querySelector('.swiper-button-next'),
+                    prevEl: slider.querySelector('.swiper-button-prev'),
+                },
+
+                pagination: {
+                    el: slider.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+            });
         });
     </script>
 @endsection

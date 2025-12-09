@@ -24,7 +24,7 @@
                 <input type="email" class="input" name="email" value="{{ $admin->user->email }}" readonly>
             </div>
             <div class="form-input">
-                <label for="lecturer_code">NIP/NIM</label>
+                <label for="lecturer_code">NIK</label>
                 <input type="text" class="input" name="lecturer_code" value="{{ $admin->lecturer_code }}" readonly>
             </div>
             <div class="form-input">

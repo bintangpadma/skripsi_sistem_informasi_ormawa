@@ -117,8 +117,23 @@
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
+            <div class="form-input lg:col-span-2">
+                <div class="flex justify-between items-center">
+                    <label for="class_year">Tahun Angkatan</label>
+                    <label id="add-year" class="!text-white cursor-pointer">Tambah Tahun</label>
+                </div>
+                <div id="class-year-wrapper" class="flex flex-col gap-2">
+                    <div class="class-year-group flex gap-2 w-full">
+                        <input type="number" name="class_year[]" class="input" placeholder="Masukkan tahun angkatan...">
+                        <button type="button" class="button-secondary remove-year">Hapus</button>
+                    </div>
+                </div>
+                @error('class_year')
+                    <p class="text-invalid">{{ $message }}</p>
+                @enderror
+            </div>
             <div class="button-group">
-                <button type="submit" class="button-primary">Tambah Event</button>
+                <button type="submit" class="button-primary">Tambah Rekruitment</button>
                 <a href="{{ route('event.index') }}" class="button-secondary">Batal Tambah</a>
             </div>
         </form>
@@ -130,6 +145,28 @@
 
         imageInput.addEventListener('change', function() {
             imagePreview.src = URL.createObjectURL(imageInput.files[0]);
+        });
+
+        document.getElementById('add-year').addEventListener('click', function() {
+            let wrapper = document.getElementById('class-year-wrapper');
+
+            let group = document.createElement('div');
+            group.classList.add('class-year-group');
+            group.classList.add('flex');
+            group.classList.add('gap-2');
+            group.classList.add('w-full');
+            group.innerHTML = `
+                <input type="number" name="class_year[]" class="input" placeholder="Masukkan tahun angkatan...">
+                <button type="button" class="button-secondary remove-year">Hapus</button>
+            `;
+
+            wrapper.appendChild(group);
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-year')) {
+                e.target.parentElement.remove();
+            }
         });
     </script>
 @endsection

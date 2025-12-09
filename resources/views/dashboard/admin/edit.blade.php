@@ -47,8 +47,8 @@
                 @enderror
             </div>
             <div class="form-input">
-                <label for="lecturer_code">NIP/NIM</label>
-                <input type="text" class="input" name="lecturer_code" placeholder="Masukkan nip/nim admin..." value="{{ $admin->lecturer_code }}">
+                <label for="lecturer_code">NIK</label>
+                <input type="text" class="input" name="lecturer_code" placeholder="Masukkan NIK admin..." value="{{ $admin->lecturer_code }}">
                 @error('lecturer_code')
                 <p class="text-invalid">{{ $message }}</p>
                 @enderror

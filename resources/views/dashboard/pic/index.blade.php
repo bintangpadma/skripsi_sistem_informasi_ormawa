@@ -13,38 +13,36 @@
     <div class="content-menu content-table">
         <div class="table-header">
             <form method="GET" class="form">
-                <input type="search" class="input" name="search" placeholder="Cari event..." value="{{ $search }}">
+                <input type="search" class="input" name="search" placeholder="Cari PIC..." value="{{ $search }}">
             </form>
-            <a href="{{ route('event.create') }}" class="button-primary">Tambah Rekruitment</a>
+            <a href="{{ route('pic.create') }}" class="button-primary">Tambah PIC</a>
         </div>
         <div class="table-group">
             <table>
                 <thead>
                 <tr>
-                    <th>Pembuat</th>
-                    <th>Nama Event</th>
-                    <th>Deskripsi</th>
+                    <th>Nama PIC</th>
+                    <th>Event</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @if ($events->count() == 0)
-                    <td colspan="4">Data event tidak ditemukan!</td>
+                @if ($pics->count() == 0)
+                    <td colspan="4">Data PIC tidak ditemukan!</td>
                 @else
-                    @foreach ($events as $event)
+                    @foreach ($pics as $pic)
                         <tr>
-                            <td>{{ $event->student_organization ? 'Ormawa: ' . $event->student_organization->name : 'UKM: ' . $event->student_activity_unit->name }}</td>
-                            <td>{{ $event->name }}</td>
-                            <td>{{ \Illuminate\Support\Str::limit($event->description, 40) }}</td>
+                            <td>{{ $pic->username }}</td>
+                            <td>{{ $pic->event->name }}</td>
                             <td>
                                 <div class="action-button">
-                                    <a href="#" class="button icon-detail" onclick="openCheckPIC('event.show', {{ $event->id }})">
+                                    <a href="{{ route('pic.show', $pic) }}" class="button icon-detail">
                                         <span class="bg-detail-primary"></span>
                                     </a>
-                                    <a href="#" class="button icon-edit" onclick="openCheckPIC('event.edit', {{ $event->id }})">
+                                    <a href="{{ route('pic.edit', $pic) }}" class="button icon-edit">
                                         <span class="bg-edit-warning"></span>
                                     </a>
-                                    <button class="button icon-delete" onclick="openCheckPIC('event.destroy', {{ $event->id }})">
+                                    <button class="button icon-delete" data-target="deleteModal" data-id="{{ $pic->id }}" onclick="openModal(this)">
                                         <span class="bg-delete-danger"></span>
                                     </button>
                                 </div>
@@ -56,10 +54,9 @@
             </table>
         </div>
         <div class="table-paginate">
-            {{ $events->links() }}
+            {{ $pics->links() }}
         </div>
     </div>
-    @include('modal.event')
     @include('modal.pic')
 
     <script>
@@ -68,22 +65,12 @@
             const modalId = element.getAttribute('data-id')
             document.getElementById(`${modalTarget}`).classList.add('show')
             if (modalTarget.includes('delete')) {
-                document.getElementById('buttonDeleteEvent').setAttribute('action', '/event/' + modalId)
+                document.getElementById('buttonDeletePic').setAttribute('action', '/pic/' + modalId)
             }
         }
 
         function closeModal(modalTarget) {
             document.getElementById(`${modalTarget}`).classList.remove('show')
-        }
-
-        function openCheckPIC(route, id) {
-            document.getElementById('checkModal').classList.add('show');
-
-            document.getElementById('link').value = route;
-            document.getElementById('events_id').value = id;
-
-            const form = document.getElementById('buttonCheckPIC');
-            form.setAttribute('action', '/pic/check');
         }
     </script>
 @endsection

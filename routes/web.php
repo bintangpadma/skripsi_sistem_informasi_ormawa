@@ -27,6 +27,10 @@ Route::controller(\App\Http\Controllers\EventRecruitmentController::class)->grou
 Route::middleware('guest')->group(function () {
     Route::get('/login', [UserController::class, 'index'])->name('user.index');
     Route::post('/login', [UserController::class, 'store'])->name('user.store');
+    Route::get('/forget-password', [UserController::class, 'forgetPassword'])->name('user.forgot');
+    Route::post('/forget-password', [UserController::class, 'storeForgetPassword'])->name('user.store-forgot');
+    Route::get('/reset-password/{token}', [UserController::class, 'resetPassword'])->name('user.reset');
+    Route::post('/reset-password', [UserController::class, 'storeResetPassword'])->name('user.store-reset');
 });
 
 Route::middleware('auth')->group(function () {
@@ -175,4 +179,6 @@ Route::middleware('auth')->group(function () {
     Route::resources(['administrative-document' => \App\Http\Controllers\AdministrativeDocumentController::class]);
     Route::get('/administrative-document/{administrativeDocument}/download', [\App\Http\Controllers\AdministrativeDocumentController::class, 'download'])->name('administrative-document.download');
     Route::post('/logout', [UserController::class, 'delete'])->name('user.delete');
+    Route::resources(['pic' => \App\Http\Controllers\PicController::class]);
+    Route::post('/pic/check', [\App\Http\Controllers\PicController::class, 'check'])->name('pic.check');
 });

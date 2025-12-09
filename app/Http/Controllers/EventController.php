@@ -36,7 +36,7 @@ class EventController extends Controller
             ->paginate(10);
 
         return view('dashboard.event.index', [
-            'page' => 'Halaman Event',
+            'page' => 'Halaman Rekruitment',
             'events' => $events,
             'search' => $search,
         ]);
@@ -45,10 +45,12 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $event->load(['student_organization', 'student_activity_unit', 'event_divisions', 'event_recruitments']);
+        $classYears = json_decode($event->class_year, true) ?? [];
 
         return view('dashboard.event.detail', [
-            'page' => 'Halaman Detail Event',
+            'page' => 'Halaman Detail Rekruitment',
             'event' => $event,
+            'classYears' => $classYears,
         ]);
     }
 
@@ -58,7 +60,7 @@ class EventController extends Controller
         $studentActivityUnits = StudentActivityUnit::latest()->get();
 
         return view('dashboard.event.create', [
-            'page' => 'Halaman Tambah Event',
+            'page' => 'Halaman Tambah Rekruitment',
             'studentOrganizations' => $studentOrganizations,
             'studentActivityUnits' => $studentActivityUnits,
         ]);
@@ -80,7 +82,11 @@ class EventController extends Controller
                 'protector' => 'required|string',
                 'responsible_person' => 'required|string',
                 'steering_committee_chair' => 'required|string',
+                'class_year' => 'required|array',
+                'class_year.*' => 'required|integer',
             ]);
+
+            $validatedData['class_year'] = json_encode($validatedData['class_year']);
 
             if ($request->hasFile('image_path')) {
                 $imageFile = $request->file('image_path');
@@ -103,12 +109,14 @@ class EventController extends Controller
         $event->load(['student_organization', 'student_activity_unit', 'event_divisions', 'event_recruitments']);
         $studentOrganizations = StudentOrganization::latest()->get();
         $studentActivityUnits = StudentActivityUnit::latest()->get();
+        $classYears = json_decode($event->class_year, true) ?? [];
 
         return view('dashboard.event.edit', [
-            'page' => 'Halaman Edit Event',
+            'page' => 'Halaman Edit Rekruitment',
             'event' => $event,
             'studentOrganizations' => $studentOrganizations,
             'studentActivityUnits' => $studentActivityUnits,
+            'classYears' => $classYears,
         ]);
     }
 
@@ -128,7 +136,11 @@ class EventController extends Controller
                 'protector' => 'required|string',
                 'responsible_person' => 'required|string',
                 'steering_committee_chair' => 'required|string',
+                'class_year' => 'required|array',
+                'class_year.*' => 'required|integer',
             ]);
+
+            $validatedData['class_year'] = json_encode($validatedData['class_year']);
 
             if ($request->hasFile('image_path')) {
                 $imageFile = $request->file('image_path');

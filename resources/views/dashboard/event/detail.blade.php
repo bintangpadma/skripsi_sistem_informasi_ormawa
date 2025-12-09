@@ -51,6 +51,21 @@
                 <label for="description">Deskripsi</label>
                 <textarea class="input" name="description" rows="4" readonly>{{ $event->description }}</textarea>
             </div>
+            <div class="form-input lg:col-span-2">
+                <div class="flex justify-between items-center">
+                    <label for="class_year">Tahun Angkatan</label>
+                </div>
+                <div id="class-year-wrapper" class="flex flex-col gap-2">
+                    @if(!empty($classYears))
+                        @foreach($classYears as $year)
+                            <div class="class-year-group flex gap-2 w-full">
+                                <input type="number" name="class_year[]" class="input"
+                                    value="{{ $year }}" placeholder="Masukkan tahun angkatan...">
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
             <hr class="style-gap lg:col-span-2">
             <div class="form-input">
                 <label for="division">Total Divisi Dibutuhkan</label>
@@ -80,7 +95,7 @@
                 </div>
             </div>
             <div class="button-group">
-                <a href="{{ route('event.index') }}" class="button-secondary">Kembali ke Halaman Event</a>
+                <a href="{{ route('event.index') }}" class="button-secondary">Kembali ke Halaman Rekruitment</a>
             </div>
         </form>
     </div>

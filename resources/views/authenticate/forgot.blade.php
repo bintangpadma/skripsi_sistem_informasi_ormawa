@@ -12,8 +12,8 @@
                 {{ session('failed') }}
             </div>
         @endif
-        <h2 class="title">Masukkan Akun Ormawa/ Admin Anda Sekarang</h2>
-        <form action="{{ route('user.store') }}" method="POST" class="form">
+        <h2 class="title">Lupa Password</h2>
+        <form action="{{ route('user.store-forgot') }}" method="POST" class="form">
             @csrf
             <div class="form-input">
                 <label for="email">Email</label>
@@ -22,15 +22,7 @@
                     <p class="text-invalid">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="form-input">
-                <label for="password">Password</label>
-                <input type="password" class="input" name="password" placeholder="Masukkan password anda...">
-                @error('password')
-                    <p class="text-invalid">{{ $message }}</p>
-                @enderror
-            </div>
-            <a href="{{ route('user.forgot') }}">Lupa Password?</a>
-            <button type="submit" class="button-primary w-full text-center">Masuk</button>
+            <button type="submit" class="button-primary w-full text-center">Kirim Link Reset Password</button>
         </form>
     </div>
 @endsection

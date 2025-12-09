@@ -32,12 +32,14 @@ class MainController extends Controller
         $end = \Carbon\Carbon::parse($event->end_date)->endOfDay();
 
         $event = $event->load(['student_organization', 'event_divisions', 'event_recruitments']);
+        $classYears = json_decode($event->class_year, true) ?? [];
         $isOpen = $today->between($start, $end) || $event->event_recruitments->count() >= $event->quota;
 
         if ($isOpen) {
             return view('homepage.recruitment', [
                 'page' => 'Halaman Daftar Event',
                 'event' => $event,
+                'classYears' => $classYears,
             ]);
         } else {
             return redirect()->route('main.index');

@@ -40,6 +40,18 @@
                 <label for="status">Status</label>
                 <input type="text" class="input capitalize" name="status" value="{{ $eventRecruitment->status === 'pending' ? 'Tertunda' : ($eventRecruitment->status === 'accepted' ? 'Diterima' : 'Tidak Diterima') }}" readonly>
             </div>
+            <div class="form-input">
+                <label for="is_interview">Status Interview</label>
+                <input type="text" class="input capitalize" name="is_interview" value="{{ $eventRecruitment->is_interview ? 'Sudah Interview' : 'Belum Interview' }}" readonly>
+            </div>
+            <div class="form-input">
+                <label for="date">Tanggal & Waktu Interview</label>
+                <input type="text" class="input capitalize" name="date" value="{{ $eventRecruitment->date ?? '-' }}" readonly>
+            </div>
+            <div class="form-input lg:col-span-2">
+                <label for="location">Tempat Interview</label>
+                <input type="text" class="input capitalize" name="location" value="{{ $eventRecruitment->location ?? '-' }}" readonly>
+            </div>
             <div class="form-input lg:col-span-2">
                 <label for="reason">Motivasi/ Alasan Mengikuti Kepanitiaan</label>
                 <textarea rows="4" class="input" name="reason" readonly>{{ $eventRecruitment->reason }}</textarea>

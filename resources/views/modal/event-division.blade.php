@@ -13,11 +13,21 @@
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="form-input">
+                <!-- <div class="form-input">
                     <label for="sort">Urutan</label>
                     <input type="number" class="input" name="sort" placeholder="Masukkan urutan divisi...">
                     @error('sort')
                     <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div> -->
+                <div class="form-input">
+                    <label for="status">Status</label>
+                    <select name="status" class="input">
+                        <option value="1">Aktif</option>
+                        <option value="0">Tidak Aktif</option>
+                    </select>
+                    @error('status')
+                        <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="button-group !col-span-1">
@@ -40,9 +50,16 @@
                     <label for="name">Divisi</label>
                     <input type="text" class="input" name="name" placeholder="Masukkan nama divisi..." readonly>
                 </div>
-                <div class="form-input">
+                <!-- <div class="form-input">
                     <label for="sort">Urutan</label>
                     <input type="number" class="input" name="sort" placeholder="Masukkan urutan divisi..." readonly>
+                </div> -->
+                <div class="form-input">
+                    <label for="status">Status</label>
+                    <select name="status" class="input" disabled>
+                        <option value="1">Aktif</option>
+                        <option value="0">Tidak Aktif</option>
+                    </select>
                 </div>
                 <div class="button-group !col-span-1">
                     <button type="button" onclick="closeModal('detailModal')" class="button-secondary">Tutup Modal</button>
@@ -68,11 +85,21 @@
                     <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="form-input">
+                <!-- <div class="form-input">
                     <label for="sort">Urutan</label>
                     <input type="number" class="input" name="sort" placeholder="Masukkan urutan divisi...">
                     @error('sort')
                     <p class="text-invalid">{{ $message }}</p>
+                    @enderror
+                </div> -->
+                <div class="form-input">
+                    <label for="status">Status</label>
+                    <select name="status" class="input">
+                        <option value="1">Aktif</option>
+                        <option value="0">Tidak Aktif</option>
+                    </select>
+                    @error('status')
+                        <p class="text-invalid">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="button-group !col-span-1">
