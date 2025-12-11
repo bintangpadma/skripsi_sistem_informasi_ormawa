@@ -1,33 +1,21 @@
-<!-- Logo Primakara - Paling Atas & Besar -->
 <p align="center">
   <a href="https://primakara.ac.id" target="_blank">
-    <img src="https://primakara.ac.id/wp-content/uploads/2022/05/LOGO-PRIMAKARA.png" 
-         width="300" alt="Primakara University Logo">
+    <img src="public/assets/image/banner/ormawaprimakara.jpg" 
+         width="800" alt="Primakara Ormawa Logo">
   </a>
-</p>
-
-<!-- Logo Laravel + Tailwind + PHP + MySQL Berjejer -->
 <p align="center">
-
-  <!-- Laravel Logo -->
   <a href="https://laravel.com" target="_blank">
     <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" 
          width="95" alt="Laravel Logo" style="margin-right: 20px;">
   </a>
-
-  <!-- Tailwind Logo -->
   <a href="https://tailwindcss.com" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" 
          width="75" alt="TailwindCSS Logo" style="margin-right: 20px;">
   </a>
-
-  <!-- PHP Logo -->
   <a href="https://www.php.net" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" 
          width="75" alt="PHP Logo" style="margin-right: 20px;">
   </a>
-
-  <!-- MySQL Logo -->
   <a href="https://www.mysql.com" target="_blank">
     <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" 
          width="80" alt="MySQL Logo">
