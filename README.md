@@ -1,67 +1,87 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+<!-- Logo Primakara - Paling Atas & Besar -->
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://primakara.ac.id" target="_blank">
+    <img src="https://primakara.ac.id/wp-content/uploads/2022/05/LOGO-PRIMAKARA.png" 
+         width="300" alt="Primakara University Logo">
+  </a>
 </p>
 
-## About Laravel
+<!-- Logo Laravel + Tailwind + PHP + MySQL Berjejer -->
+<p align="center">
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+  <!-- Laravel Logo -->
+  <a href="https://laravel.com" target="_blank">
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" 
+         width="95" alt="Laravel Logo" style="margin-right: 20px;">
+  </a>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  <!-- Tailwind Logo -->
+  <a href="https://tailwindcss.com" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" 
+         width="75" alt="TailwindCSS Logo" style="margin-right: 20px;">
+  </a>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+  <!-- PHP Logo -->
+  <a href="https://www.php.net" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" 
+         width="75" alt="PHP Logo" style="margin-right: 20px;">
+  </a>
 
-## Learning Laravel
+  <!-- MySQL Logo -->
+  <a href="https://www.mysql.com" target="_blank">
+    <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" 
+         width="80" alt="MySQL Logo">
+  </a>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+</p>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.lar
-avel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Tentang Sistem Informasi Organisasi Mahasiswa
 
-## Laravel Sponsors
+Sistem Informasi Organisasi mahasiswa merupakan sistem informasi berbasis website untuk mengelola kegiatan, program kerja, anggota, kepanitiaan, dan informasi Organisasi Mahasiswa (ORMAWA) di Primakara University. Dibangun menggunakan Laravel 11 dan TailwindCSS, dengan desain modern, cepat, dan mudah dikembangkan. Berikut merupakan fitur apa saja yang terdapat pada sistem ini : 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Manajemen Unit Kegiatan Mahasiswa / HIMA / BEM
+- Manajemen Program Kerja (Proker)
+- Manajemen Event & Pendaftaran Kepanitiaan
+- Manajemen Anggota
+- Dashboard Admin
+- CRUD Lengkap
+- Responsive UI dengan TailwindCSS
 
-### Premium Partners
+## Tech Stack
+- Backend: Laravel 11
+- Frontend: TailwindCSS
+- Database: MySQL
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Instalasi & Setup
+Ikuti langkah di bawah untuk menjalankan proyek ini secara lokal.
 
-## Contributing
+1.  Clone Repository :</p>
+   git clone https://github.com/username/nama-project.git</p>
+   cd nama-project
+2. Install Dependency Backend :</p>
+    composer install
+3. Install Dependency Frontend :</p>
+    npm install
+4. Setup Environment :</p>
+ - Copy file .env.example menjadi .env :</p>
+   cp .env.example .env
+ - Generate application key :</p>
+   php artisan key:generate
+5. Konfigurasi Database :</p>
+   Edit file .env :</p>
+   DB_CONNECTION=mysql</p>
+   DB_HOST=127.0.0.1</p>
+   DB_PORT=3306</p>
+   DB_DATABASE=nama_database</p>
+   DB_USERNAME=root</p>
+   DB_PASSWORD=</p>
+6. Migrasi Database :</p>
+   php artisan migrate
+7. Build Asset Frontend :</p>
+   npm run dev
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Pengembang
+Proyek ini dibuat sebagai bagian dari skripsi dengan judul:
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+"Sistem Informasi Organisasi Mahasiswa Berbasis Website dengan Metode Extreme Programming di Primakara University"
