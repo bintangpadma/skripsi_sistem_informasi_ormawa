@@ -165,7 +165,8 @@ class EventRecruitmentController extends Controller
                     'from_name' => 'Admin ' . $eventRecruitment->event->name,
                 ];
 
-                Mail::to($recipient)->send(new SendRecruitmentInterviewEmail($data));
+                Mail::to($eventRecruitment->email)
+    ->send(new SendRecruitmentInterviewEmail($data));
             }
 
             return redirect()->route('event-recruitment.index', $event)->with('success', 'Berhasil mengedit perekrut!');
